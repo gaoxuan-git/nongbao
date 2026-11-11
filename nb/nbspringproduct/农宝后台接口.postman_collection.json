@@ -1,0 +1,506 @@
+{
+  "info": {
+    "name": "农宝后台接口",
+    "description": "农宝后台管理系统API接口集合",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:80",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "补贴政策模块",
+      "item": [
+        {
+          "name": "查询补贴政策列表",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/policy/list",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "policy", "list"]
+            }
+          }
+        },
+        {
+          "name": "获取补贴政策详细信息",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/policy/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "policy", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "新增补贴政策",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"2025年农业补贴政策\",\n  \"author\": \"农业部\",\n  \"resume\": \"本年度农业补贴政策摘要\",\n  \"content\": \"详细的政策内容...\",\n  \"publishStatus\": 0,\n  \"recommend\": 0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/policy",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "policy"]
+            }
+          }
+        },
+        {
+          "name": "修改补贴政策",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"1\",\n  \"title\": \"2025年农业补贴政策(修改)\",\n  \"author\": \"农业部\",\n  \"resume\": \"本年度农业补贴政策摘要\",\n  \"content\": \"详细的政策内容...\",\n  \"publishStatus\": 1,\n  \"recommend\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/policy",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "policy"]
+            }
+          }
+        },
+        {
+          "name": "删除补贴政策",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/policy/:ids",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "policy", ":ids"],
+              "variable": [
+                {
+                  "key": "ids",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "推荐补贴政策",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\"1\", \"2\"]"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/policy/recommendAllowancePolicy",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "policy", "recommendAllowancePolicy"]
+            }
+          }
+        },
+        {
+          "name": "发布补贴政策",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\"1\", \"2\"]"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/policy/releaseAllowancePolicy",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "policy", "releaseAllowancePolicy"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "信贷信息模块",
+      "item": [
+        {
+          "name": "查询信贷信息列表",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/loan/list",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "loan", "list"]
+            }
+          }
+        },
+        {
+          "name": "获取信贷信息详细信息",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/loan/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "loan", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "新增信贷信息",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"农业信贷产品\",\n  \"author\": \"银行\",\n  \"resume\": \"信贷产品摘要\",\n  \"content\": \"详细的信贷内容...\",\n  \"image\": \"http://example.com/image.jpg\",\n  \"publishStatus\": 0,\n  \"recommend\": 0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/loan",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "loan"]
+            }
+          }
+        },
+        {
+          "name": "推荐信贷信息",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\"1\", \"2\"]"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/loan/recommandCreditLoan",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "loan", "recommandCreditLoan"]
+            }
+          }
+        },
+        {
+          "name": "发布信贷信息",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\"1\", \"2\"]"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/loan/publishCreditLoan",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "loan", "publishCreditLoan"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "农贸市场模块",
+      "item": [
+        {
+          "name": "查询农贸市场列表",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/market/list",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "market", "list"]
+            }
+          }
+        },
+        {
+          "name": "获取农贸市场详细信息",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/market/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "market", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "新增农贸市场",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"中心农贸市场\",\n  \"regionId\": \"110101\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/market",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "market"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "农产品模块",
+      "item": [
+        {
+          "name": "查询农产品列表",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/produce/list",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "produce", "list"]
+            }
+          }
+        },
+        {
+          "name": "获取农产品详细信息",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/produce/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "produce", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "新增农产品",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"有机蔬菜\",\n  \"resume\": \"新鲜有机蔬菜\",\n  \"description\": \"详细描述...\",\n  \"image\": \"http://example.com/image.jpg\",\n  \"catgory\": \"蔬菜\",\n  \"produceType\": \"有机\",\n  \"price\": 15.50,\n  \"providerName\": \"张三农场\",\n  \"pushStatus\": 0,\n  \"recommend\": 0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/produce",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "produce"]
+            }
+          }
+        },
+        {
+          "name": "推荐农产品",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\"1\", \"2\"]"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/produce/recommendFarmProduce",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "produce", "recommendFarmProduce"]
+            }
+          }
+        },
+        {
+          "name": "发布农产品",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "[\"1\", \"2\"]"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/yjnb/produce/pushFarmProduce",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "yjnb", "produce", "pushFarmProduce"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "测试用户模块",
+      "item": [
+        {
+          "name": "获取用户列表",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/test/user/list",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "test", "user", "list"]
+            }
+          }
+        },
+        {
+          "name": "获取用户详细",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/test/user/:userId",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "test", "user", ":userId"],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "新增用户",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/test/user/save?username=测试用户&mobile=13800138000&password=123456",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "test", "user", "save"],
+              "query": [
+                {
+                  "key": "username",
+                  "value": "测试用户"
+                },
+                {
+                  "key": "mobile",
+                  "value": "13800138000"
+                },
+                {
+                  "key": "password",
+                  "value": "123456"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "更新用户",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"username\": \"张三(修改)\",\n  \"mobile\": \"13800138001\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/test/user/update",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "test", "user", "update"]
+            }
+          }
+        },
+        {
+          "name": "删除用户信息",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/dev-api/test/user/:userId",
+              "host": ["{{baseUrl}}"],
+              "path": ["dev-api", "test", "user", ":userId"],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+

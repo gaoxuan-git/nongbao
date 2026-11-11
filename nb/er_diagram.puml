@@ -1,0 +1,109 @@
+@startuml
+!theme plain
+
+skinparam defaultFontName "Sans"
+skinparam defaultFontSize 12
+skinparam shadowing false
+skinparam roundcorner 5
+
+' 实体样式
+skinparam entity {
+    BackgroundColor #E8F3FF
+    BorderColor #1E88E5
+    FontSize 12
+    FontStyle bold
+}
+
+' 关系样式
+skinparam relationship {
+    FontSize 10
+}
+
+' 全局间距
+skinparam nodesep 30
+skinparam ranksep 40
+
+' =======================================================
+'                       实体定义
+' =======================================================
+
+entity "系统用户\n(sys_user)" as SysUser
+entity "系统角色\n(sys_role)" as SysRole
+entity "广告\n(nb_advertisement)" as Advertisement
+entity "惠农政策\n(nb_allowance_policy)" as AllowancePolicy
+entity "信用贷款\n(nb_credit_loan)" as CreditLoan
+entity "农业专家\n(nb_expert)" as Expert
+entity "农产品市场\n(nb_farm_market)" as FarmMarket
+entity "农产品\n(nb_farm_produce)" as FarmProduce
+entity "图文课程\n(nb_graphic_course)" as GraphicCourse
+entity "视频课程\n(nb_video_course)" as VideoCourse
+entity "农业服务\n(nb_service)" as Service
+entity "系统配置\n(sys_config)" as SysConfig
+
+' 中间联系实体（用于多对多关系）
+entity "用户角色\n(user_role)" as UserRole
+
+' =======================================================
+'                       关系定义
+' =======================================================
+
+' 用户-角色：多对多关系（通过中间表）
+SysUser ||--o{ UserRole : "1对多"
+SysRole ||--o{ UserRole : "1对多"
+
+' 用户与各业务内容的创建/发布关系（1对多）
+SysUser ||--o{ Advertisement : "创建/发布"
+SysUser ||--o{ AllowancePolicy : "创建/发布"
+SysUser ||--o{ CreditLoan : "创建/发布"
+SysUser ||--o{ Expert : "创建"
+SysUser ||--o{ FarmMarket : "创建"
+SysUser ||--o{ FarmProduce : "发布/拥有"
+SysUser ||--o{ GraphicCourse : "创建"
+SysUser ||--o{ VideoCourse : "创建"
+SysUser ||--o{ Service : "创建"
+
+' 课程概化关系（使用抽象实体表示）
+entity "课程\n(Course)" as Course <<abstract>>
+Course <|-- GraphicCourse : "概化"
+Course <|-- VideoCourse : "概化"
+
+' 独立实体（无外键关系）
+SysConfig
+
+' =======================================================
+'                       注释说明
+' =======================================================
+
+note right of UserRole
+  用户与角色的多对多关系
+  通过中间表实现
+end note
+
+note right of SysUser
+  系统用户可以创建和管理
+  各类业务内容
+end note
+
+note right of Course
+  课程概化关系：
+  图文课程和视频课程
+  都是课程的子类型
+  （全部概化）
+end note
+
+note bottom of FarmProduce
+  扩展设计：
+  农产品与市场可以是
+  多对多关系（通过中间表）
+  （当前数据库未实现外键）
+end note
+
+note bottom of Expert
+  扩展设计：
+  专家与服务可以是
+  多对多关系（通过中间表）
+  （当前数据库未实现外键）
+end note
+
+@enduml
+
